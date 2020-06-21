@@ -1,0 +1,44 @@
+server:
+  port: 6001
+spring:
+  application:
+    name: pet-platform
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sale?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: admin
+    type: com.alibaba.druid.pool.DruidDataSource
+    platform: mysql
+    druid:
+      min-idle: 5
+      initial-size: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      max-pool-prepared-statement-per-connection-size: 20
+      pool-prepared-statements: true
+      filter:
+        stat:
+          log-slow-sql: true
+      filters: stat,wall,log4j
+      use-global-data-source-stat: true
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#dubbo配置开始
+dubbo:
+  provider:
+    group:
+#dubbo配置结束
+
+#mybatis配置开始
+mybatis:
+  mapper-locations: classpath:mybatis/mysql/**/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+#mybatis配置结束
+

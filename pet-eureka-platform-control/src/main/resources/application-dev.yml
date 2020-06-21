@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: pet-eureka-platform-control
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+  instance:
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
